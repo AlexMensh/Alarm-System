@@ -12,23 +12,19 @@ public class AlarmSensor : MonoBehaviour
 
     private void Update()
     {
-        if (_isActive)
-            _volume = _maxVolume;
-        else
-            _volume = 0f;
-
+        _volume = _isActive ? _maxVolume : 0f;
         _alarmSound.volume = Mathf.MoveTowards(_alarmSound.volume, _volume, _riseStep * Time.deltaTime);
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void ActivateAlarm()
     {
-        if (other.CompareTag("Theif"))
-            _isActive = true;
+        _isActive = true;
+        _alarmSound.Play();
     }
 
-    private void OnTriggerExit(Collider other)
+    public void DeactivateAlarm()
     {
-        if (other.CompareTag("Theif"))
-            _isActive = false;
+        _isActive = false;
+        _alarmSound.Stop();
     }
 }

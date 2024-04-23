@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Movement : MonoBehaviour
+public class Mover : MonoBehaviour
 {
     [SerializeField] private Transform[] _wayPoints;
     [SerializeField] private float _speed;
